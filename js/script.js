@@ -15,12 +15,24 @@ $(document).ready(function(){
       "method": "GET",
       "success": function (data) {
         var results = data.results;
+        var source = $("#film-template").html;
+        var template = Handlebars.compile(source);
+
 
         // ciclo per le proprietà
         for ( i = 0; i < results.length; i++) {
           var name= results[i].title;
           var originalLanguage = results[i].original_language;
           var vote = results[i].vote_average;
+
+          var context = {
+          "name": name,
+          "lingua": originalLanguage,
+          "voto": vote
+          };
+          var html = template(context);
+
+          $(".lista_film").append(html);
         }
         // fine ciclo
       },
@@ -31,20 +43,20 @@ $(document).ready(function(){
     );
     // fine ajax
     // template
-    var source = $("#film-template").html;
-    var template = Handlebars.compile(source);
-     
-    for (i=0; i < titolo.length; i++){
-      var context = {
-      "name": name,
-      "lingua": originalLanguage,
-      "voto": vote
-      };
-      var html = template(context);
-
-      $(".lista_film").append(html);
-    }
-  });
+  //   var source = $("#film-template").html;
+  //   var template = Handlebars.compile(source);
+  //
+  //   for (i=0; i < results.length; i++){
+  //     var context = {
+  //     "name": name,
+  //     "lingua": originalLanguage,
+  //     "voto": vote
+  //     };
+  //     var html = template(context);
+  //
+  //     $(".lista_film").append(html);
+  //   }
+  // });
   // fine evento
 });
 // fine jquery
