@@ -18,19 +18,32 @@ $(document).ready(function(){
 
         // ciclo per le proprietà
         for ( i = 0; i < results.length; i++) {
-          console.log(results[i].title);
-          console.log(results[i].original_language);
-          console.log(results[i].vote_average);
-
+          var name= results[i].title;
+          var originalLanguage = results[i].original_language;
+          var vote = results[i].vote_average;
         }
         // fine ciclo
       },
       "error": function () {
       alert("E' avvenuto un errore. " );
       }
+     }
+    );
+    // fine ajax
+    // template
+    var source = $("#film-template").html;
+    var template = Handlebars.compile(source);
+     
+    for (i=0; i < titolo.length; i++){
+      var context = {
+      "name": name,
+      "lingua": originalLanguage,
+      "voto": vote
+      };
+      var html = template(context);
+
+      $(".lista_film").append(html);
     }
-      );
-      // fine ajax
   });
   // fine evento
 });

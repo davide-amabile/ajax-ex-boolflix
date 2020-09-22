@@ -15,12 +15,15 @@
       <a id="btn" href="#">Invia</a>
     </div>
     <div class="">
-      <ul>
-        <li>Titolo</li>
-        <li>Titolo originale</li>
-        <li>Lingua</li>
-        <li>Voto</li>
+      <ul class="lista_film">
+        
       </ul>
+
+      <script id="film-template" type="text/x-handlebars-template">
+        <li>Titolo: {{name}}</li>
+        <li>Lingua: {{lingua}}</li>
+        <li>Voto: {{vote}}</li>
+      </script>
 
     </div>
 
