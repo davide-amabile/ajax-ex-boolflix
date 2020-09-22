@@ -14,10 +14,9 @@ $(document).ready(function(){
       "method": "GET",
       "success": function (data) {
          console.log(data.results);
-       }
       },
-      "error": function (richiesta, stato, errori) {
-      alert("E' avvenuto un errore. " + errore);
+      "error": function () {
+      alert("E' avvenuto un errore. " );
       }
     }
       );
