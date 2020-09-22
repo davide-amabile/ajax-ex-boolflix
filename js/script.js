@@ -13,13 +13,13 @@ $(document).ready(function(){
       },
       "method": "GET",
       "success": function (data) {
-         console.log(data.result);
+         console.log(data.results);
        }
       },
       "error": function (richiesta, stato, errori) {
       alert("E' avvenuto un errore. " + errore);
       }
-      }
+    }
       );
   });
   // fine evento
