@@ -41,22 +41,6 @@ $(document).ready(function(){
       }
      }
     );
-    // fine ajax
-    // template
-  //   var source = $("#film-template").html;
-  //   var template = Handlebars.compile(source);
-  //
-  //   for (i=0; i < results.length; i++){
-  //     var context = {
-  //     "name": name,
-  //     "lingua": originalLanguage,
-  //     "voto": vote
-  //     };
-  //     var html = template(context);
-  //
-  //     $(".lista_film").append(html);
-  //   }
-  // });
-  // fine evento
+
 });
 // fine jquery
