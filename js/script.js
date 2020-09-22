@@ -14,11 +14,11 @@ $(document).ready(function(){
       },
       "method": "GET",
       "success": function (data) {
-        var results = data.results;
-        var source = $("#film-template").html;
+
+        var source = $("#film-template").html();
         var template = Handlebars.compile(source);
 
-
+        var results = data.results;
         // ciclo per le proprietà
         for ( i = 0; i < results.length; i++) {
           var name= results[i].title;
