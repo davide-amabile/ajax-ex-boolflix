@@ -1,0 +1,14 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#btn {
+
+  background-color: blue;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px;
+
+}
