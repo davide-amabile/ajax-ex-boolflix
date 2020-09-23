@@ -4,9 +4,11 @@ $(document).ready(function(){
   $(document).on("click", "#btn", function(){
     // prendo il titolo dall'input
     var titolo = $("#search").val();
-
     // invocare funzione
     getTheMovie(titolo);
+
+    // svuoto html di ul e il campo inpu
+    reset();
 });
 // fine evento click
 
@@ -20,6 +22,9 @@ $("#search").keypress(
      if ( titolo != "") {
        // invoco funzione
        getTheMovie(titolo);
+
+       // svuoto html di ul e il campo inpu
+       reset();
      }
    }
 });
@@ -47,13 +52,15 @@ function getTheMovie(titolo){
       var results = data.results;
       // ciclo per le proprietà
       for ( i = 0; i < results.length; i++) {
+        var numVote = Math.floor(results[i].vote_average / 2);
 
         // template
         var context = {
         "name": results[i].title,
         "lingua": results[i].original_language,
-        "vote": results[i].vote_average
+        "vote": numVote
         };
+
         var html = template(context);
 
         $(".lista_film").append(html);
@@ -66,4 +73,11 @@ function getTheMovie(titolo){
    }
   );
   // fine ajax
+}
+// fine funzione vento e template
+
+// funzione reset
+function reset(){
+  $(".lista_film").html("");
+  $("#search").val("");
 }
