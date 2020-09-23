@@ -6,6 +6,7 @@ $(document).ready(function(){
     var titolo = $("#search").val();
     // invocare funzione per film
     getTheMovie(titolo);
+    getSeries(titolo);
 
     // svuoto html di ul e il campo inpu
     reset();
@@ -22,6 +23,7 @@ $("#search").keypress(
      if ( titolo != "") {
        // invoco funzione
        getTheMovie(titolo);
+       getSeries(titolo);
 
        // svuoto html di ul e il campo inpu
        reset();
@@ -64,7 +66,7 @@ function getTheMovie(titolo){
         }
 
         // creare bandiera
-         var lingua = results[i].original_language;
+        var lingua = results[i].original_language;
         var flags =' <img src="img/' + lingua +'.png " alt=" '
         + lingua+' " class="lingua">';
 
@@ -78,7 +80,6 @@ function getTheMovie(titolo){
         };
         var html = template(context);
         $(".lista_film").append(html);
-         console.log(results[i].original_language);
       }
       // fine ciclo
 
@@ -93,11 +94,67 @@ function getTheMovie(titolo){
 }
 // fine funzione vento e template
 
+
+
 // funzioni serie tv
+function getSeries(titolo){
+  $.ajax(
+    {
+    "url": "https://api.themoviedb.org/3/search/tv?api_key=d8103ee9346cae884496275cd6ea3a72",
+    "data":{
+      "query": titolo
+    },
+    "method": "GET",
+    "success": function (data) {
+
+      var source = $("#series-template").html();
+      var template = Handlebars.compile(source);
+
+      var results = data.results;
+      // ciclo per le proprietà
+      for ( i = 0; i < results.length; i++) {
+
+        // numeri interi tra 1 e 5 per i voti
+        var numVote = Math.floor(results[i].vote_average / 2);
+
+        //creare le stelle per che corrisponadno ai numeri dei voti
+        var stars ="";
+        for (j=1; j<=numVote; j++){
+           stars += "<li><i class='fas fa-star'></i></li>";
+        }
+
+        // creare bandiera
+        var lingua = results[i].original_language;
+        var flags =' <img src="img/' + lingua +'.png " alt=" '
+        + lingua+' " class="lingua">';
+
+
+
+        // template
+        var context = {
+        "title": results[i].name,
+        "lingua": flags,
+        "stars" : stars
+        };
+        var html = template(context);
+        $(".lista_film").append(html);
+      }
+      // fine ciclo
+
+    },
+
+    "error": function () {
+    alert("E' avvenuto un errore. " );
+    }
+   }
+  );
+}
+// fine funzione
 
 
 
 
+// funzione reset
 function reset(){
   $(".lista_film").html("");
   $("#search").val("");
