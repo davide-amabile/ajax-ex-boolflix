@@ -12,6 +12,7 @@
   padding: 15px;
 }
 
+/* elenco stelle voto nel template */
 .list_star li {
   display: inline-block;
 
@@ -20,7 +21,10 @@
 .list_star li i {
  color: yellow;
 }
+/* elenco sstelle voto nel template */
 
-.yellow {
-  color: yellow;
+/* bandiere */
+.lingua {
+  width: 15px;
 }
+/* 7 bandiere */

@@ -6,7 +6,6 @@ $(document).ready(function(){
     var titolo = $("#search").val();
     // invocare funzione
     getTheMovie(titolo);
-
     // svuoto html di ul e il campo inpu
     reset();
 });
@@ -22,7 +21,6 @@ $("#search").keypress(
      if ( titolo != "") {
        // invoco funzione
        getTheMovie(titolo);
-
        // svuoto html di ul e il campo inpu
        reset();
      }
@@ -31,6 +29,8 @@ $("#search").keypress(
 // fine vento keypress
 });
 // fine jquery
+
+
 
 
 // funzione chiamata e template
@@ -52,29 +52,37 @@ function getTheMovie(titolo){
       var results = data.results;
       // ciclo per le proprietà
       for ( i = 0; i < results.length; i++) {
+
+        // numeri interi tra 1 e 5 per i voti
         var numVote = Math.floor(results[i].vote_average / 2);
+
+        //creare le stelle per che corrisponadno ai numeri dei voti
         var stars ="";
         for (j=1; j<=numVote; j++){
            stars += "<li><i class='fas fa-star'></i></li>";
-
         }
+
+        // creare bandiera
+         var lingua = results[i].original_language;
+        var flags =' <img src="img/' + lingua +'.png " alt=" '
+        + lingua+' " class="lingua">';
+
+
 
         // template
         var context = {
         "name": results[i].title,
-        "lingua": results[i].original_language,
+        "lingua": flags,
         "stars" : stars
         };
-
-
         var html = template(context);
-
         $(".lista_film").append(html);
-        // $(".list_star li:nth(-n+"+numVote+") i").addClass("yellow");
+         console.log(results[i].original_language);
       }
       // fine ciclo
 
     },
+
     "error": function () {
     alert("E' avvenuto un errore. " );
     }
