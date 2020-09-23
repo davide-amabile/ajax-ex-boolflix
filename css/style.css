@@ -14,11 +14,11 @@
 
 .list_star li {
   display: inline-block;
-  color: red;
+
 }
 
 .list_star li i {
-  color: #fff;;
+ color: yellow;
 }
 
 .yellow {

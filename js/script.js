@@ -53,20 +53,27 @@ function getTheMovie(titolo){
       // ciclo per le proprietà
       for ( i = 0; i < results.length; i++) {
         var numVote = Math.floor(results[i].vote_average / 2);
+        var stars ="";
+        for (j=1; j<=numVote; j++){
+           stars += "<li><i class='fas fa-star'></i></li>";
 
-        $(".list_star li i:nth(-n+"numVote")").addClass("yellow");
+        }
 
         // template
         var context = {
         "name": results[i].title,
         "lingua": results[i].original_language,
+        "stars" : stars
         };
+
 
         var html = template(context);
 
         $(".lista_film").append(html);
+        // $(".list_star li:nth(-n+"+numVote+") i").addClass("yellow");
       }
       // fine ciclo
+
     },
     "error": function () {
     alert("E' avvenuto un errore. " );
