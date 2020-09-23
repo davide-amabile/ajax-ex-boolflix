@@ -40,11 +40,9 @@ function getTheMovie(titolo){
   // effettuare chiamata ajax
   $.ajax(
     {
-    "url": "https://api.themoviedb.org/3/search/tv?api_key=d8103ee9346cae884496275cd6ea3a72",
+    "url": "https://api.themoviedb.org/3/search/movie?api_key=d8103ee9346cae884496275cd6ea3a72",
     "data":{
-      "query": titolo,
-
-
+      "query": titolo
     },
     "method": "GET",
     "success": function (data) {
