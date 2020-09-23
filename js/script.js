@@ -6,7 +6,7 @@ $(document).ready(function(){
     var titolo = $("#search").val();
     // invocare funzione per film
     getTheMovie(titolo);
-    
+
     // svuoto html di ul e il campo inpu
     reset();
 });
@@ -40,10 +40,10 @@ function getTheMovie(titolo){
   // effettuare chiamata ajax
   $.ajax(
     {
-    "url": "https://api.themoviedb.org/3/search/movie?api_key=d8103ee9346cae884496275cd6ea3a72",
+    "url": "https://api.themoviedb.org/3/search/tv?api_key=d8103ee9346cae884496275cd6ea3a72",
     "data":{
       "query": titolo,
-      "language":" it-IT"
+
 
     },
     "method": "GET",
@@ -94,6 +94,9 @@ function getTheMovie(titolo){
   // fine ajax
 }
 // fine funzione vento e template
+
+// funzioni serie tv
+
 
 
 
