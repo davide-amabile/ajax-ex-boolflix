@@ -54,11 +54,12 @@ function getTheMovie(titolo){
       for ( i = 0; i < results.length; i++) {
         var numVote = Math.floor(results[i].vote_average / 2);
 
+        $(".list_star li i:nth(-n+"numVote")").addClass("yellow");
+
         // template
         var context = {
         "name": results[i].title,
         "lingua": results[i].original_language,
-        "vote": numVote
         };
 
         var html = template(context);
