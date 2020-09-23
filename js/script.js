@@ -4,8 +4,9 @@ $(document).ready(function(){
   $(document).on("click", "#btn", function(){
     // prendo il titolo dall'input
     var titolo = $("#search").val();
-    // invocare funzione
+    // invocare funzione per film
     getTheMovie(titolo);
+    
     // svuoto html di ul e il campo inpu
     reset();
 });
@@ -21,6 +22,7 @@ $("#search").keypress(
      if ( titolo != "") {
        // invoco funzione
        getTheMovie(titolo);
+
        // svuoto html di ul e il campo inpu
        reset();
      }
@@ -33,7 +35,7 @@ $("#search").keypress(
 
 
 
-// funzione chiamata e template
+// funzione chiamata e template per film
 function getTheMovie(titolo){
   // effettuare chiamata ajax
   $.ajax(
@@ -41,6 +43,7 @@ function getTheMovie(titolo){
     "url": "https://api.themoviedb.org/3/search/movie?api_key=d8103ee9346cae884496275cd6ea3a72",
     "data":{
       "query": titolo,
+      "language":" it-IT"
 
     },
     "method": "GET",
@@ -92,7 +95,8 @@ function getTheMovie(titolo){
 }
 // fine funzione vento e template
 
-// funzione reset
+
+
 function reset(){
   $(".lista_film").html("");
   $("#search").val("");
