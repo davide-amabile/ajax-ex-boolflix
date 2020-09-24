@@ -1,18 +1,20 @@
 $(document).ready(function(){
 
   // creare evento click sul bottone
-  $(document).on("click", "#btn", function(){
+  $("#btn").click(
+    function(){
     // prendo il titolo dall'input
     var titolo = $("#search").val();
-    // invocare funzione per film
+    // invoco funzione per la chiamata dei film
     getTheMovie(titolo);
+
+    // invoco funzione per la chiamata delle srerie tv
     getSeries(titolo);
 
     // svuoto html di ul e il campo inpu
     reset();
 });
 // fine evento click
-
 
 // creare evento keypress sull'input
 $("#search").keypress(
@@ -21,8 +23,10 @@ $("#search").keypress(
      // condizione dell'inpiut senza testo
      var titolo = $("#search").val();
      if ( titolo != "") {
-       // invoco funzione
+       // invoco funzione per la chiamata dei film
        getTheMovie(titolo);
+
+       // invoco funzione per la chiamata delle srerie tv
        getSeries(titolo);
 
        // svuoto html di ul e il campo inpu
@@ -35,24 +39,21 @@ $("#search").keypress(
 // fine jquery
 
 
-
-
-// funzione chiamata e template per film
+// funzione chiamata  per film
 function getTheMovie(titolo){
   // effettuare chiamata ajax
   $.ajax(
     {
     "url": "https://api.themoviedb.org/3/search/movie?api_key=d8103ee9346cae884496275cd6ea3a72",
     "data":{
-      "query": titolo
+      "query": titolo,
+      "language": "it-IT"
     },
     "method": "GET",
     "success": function (data) {
-
+     // invoco funzione per il template
     renderResult("film",data);
-
     },
-
     "error": function () {
     alert("E' avvenuto un errore. " );
     }
@@ -62,22 +63,20 @@ function getTheMovie(titolo){
 }
 // fine funzione vento e template
 
-
-
-// funzioni serie tv
+// funzioni chiamata serie tv
 function getSeries(titolo){
   $.ajax(
     {
     "url": "https://api.themoviedb.org/3/search/tv?api_key=d8103ee9346cae884496275cd6ea3a72",
     "data":{
-      "query": titolo
+      "query": titolo,
+      "language" :"it-IT"
     },
     "method": "GET",
     "success": function (data) {
-
+      // invoco funzione per il template
       renderResult("tv",data);
     },
-
     "error": function () {
     alert("E' avvenuto un errore. " );
     }
@@ -86,20 +85,18 @@ function getSeries(titolo){
 }
 // fine funzione
 
-
-
-
 // funzione reset
 function reset(){
   $(".lista_film").html("");
   $("#search").val("");
 }
+// / funzione reset
 
-
+// funzione template
 function renderResult(type, data){
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
-
+  // array proprietà nelle chiamate
   var results = data.results;
   // ciclo per le proprietà
   for ( i = 0; i < results.length; i++) {
@@ -118,24 +115,27 @@ function renderResult(type, data){
     var flags =' <img src="img/' + lingua +'.png " alt=" '
     + lingua+' " class="lingua">';
 
-    // separare i titoli dei fil e serie tv
+    // separare i titoli dei film e serie tv
     if (type == "film") {
-     var genere = results[i].title;
+     var nome = results[i].title;
+     var nomeOr =  results[i].original_title;
    } else if (type == "tv") {
-     var genere = results[i].name;
+     var nome = results[i].name;
+     var nomeOr =  results[i].original_name;
    }
-
 
     // template
     var context = {
-    "name": genere,
+    "name": nome,
     "lingua": flags,
     "stars" : stars,
-    "immagine" : results[i].poster_path
+    "immagine" : results[i].poster_path,
+    "originale" : nomeOr,
+    "type" : type
     };
     var html = template(context);
     $(".lista_film").append(html);
   }
   // fine ciclo
-
 }
+// /funzione template
