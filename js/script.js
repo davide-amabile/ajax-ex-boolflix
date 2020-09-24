@@ -130,7 +130,8 @@ function renderResult(type, data){
     var context = {
     "name": genere,
     "lingua": flags,
-    "stars" : stars
+    "stars" : stars,
+    "immagine" : results[i].poster_path
     };
     var html = template(context);
     $(".lista_film").append(html);

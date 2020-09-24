@@ -18,8 +18,9 @@
       <ul class="lista_film">
 
       </ul>
-
+      <!-- template film e serie tv -->
       <script id="film-template" type="text/x-handlebars-template">
+        <img src="http://image.tmdb.org/t/p/w185/{{immagine}}" alt="">
         <li>Titolo: {{name}}</li>
         <li>Lingua: {{{lingua}}}</li>
         <li>
@@ -28,17 +29,6 @@
           </ul>
         </li>
       </script>
-      <!-- template serie tv -->
-      <!-- <script id="series-template" type="text/x-handlebars-template">
-        <li>Titolo: {{title}}</li>
-        <li>Lingua: {{{lingua}}}</li>
-        <li>
-          <ul class="list_star">
-           {{{stars}}}
-          </ul>
-        </li>
-      </script> -->
-
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
