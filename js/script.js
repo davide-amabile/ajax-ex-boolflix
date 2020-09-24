@@ -49,39 +49,7 @@ function getTheMovie(titolo){
     "method": "GET",
     "success": function (data) {
 
-      var source = $("#film-template").html();
-      var template = Handlebars.compile(source);
-
-      var results = data.results;
-      // ciclo per le proprietà
-      for ( i = 0; i < results.length; i++) {
-
-        // numeri interi tra 1 e 5 per i voti
-        var numVote = Math.floor(results[i].vote_average / 2);
-
-        //creare le stelle per che corrisponadno ai numeri dei voti
-        var stars ="";
-        for (j=1; j<=numVote; j++){
-           stars += "<li><i class='fas fa-star'></i></li>";
-        }
-
-        // creare bandiera
-        var lingua = results[i].original_language;
-        var flags =' <img src="img/' + lingua +'.png " alt=" '
-        + lingua+' " class="lingua">';
-
-
-
-        // template
-        var context = {
-        "name": results[i].title,
-        "lingua": flags,
-        "stars" : stars
-        };
-        var html = template(context);
-        $(".lista_film").append(html);
-      }
-      // fine ciclo
+    renderResult("film",data);
 
     },
 
@@ -107,40 +75,7 @@ function getSeries(titolo){
     "method": "GET",
     "success": function (data) {
 
-      var source = $("#series-template").html();
-      var template = Handlebars.compile(source);
-
-      var results = data.results;
-      // ciclo per le proprietà
-      for ( i = 0; i < results.length; i++) {
-
-        // numeri interi tra 1 e 5 per i voti
-        var numVote = Math.floor(results[i].vote_average / 2);
-
-        //creare le stelle per che corrisponadno ai numeri dei voti
-        var stars ="";
-        for (j=1; j<=numVote; j++){
-           stars += "<li><i class='fas fa-star'></i></li>";
-        }
-
-        // creare bandiera
-        var lingua = results[i].original_language;
-        var flags =' <img src="img/' + lingua +'.png " alt=" '
-        + lingua+' " class="lingua">';
-
-
-
-        // template
-        var context = {
-        "title": results[i].name,
-        "lingua": flags,
-        "stars" : stars
-        };
-        var html = template(context);
-        $(".lista_film").append(html);
-      }
-      // fine ciclo
-
+      renderResult("tv",data);
     },
 
     "error": function () {
@@ -158,4 +93,48 @@ function getSeries(titolo){
 function reset(){
   $(".lista_film").html("");
   $("#search").val("");
+}
+
+
+function renderResult(type, data){
+  var source = $("#film-template").html();
+  var template = Handlebars.compile(source);
+
+  var results = data.results;
+  // ciclo per le proprietà
+  for ( i = 0; i < results.length; i++) {
+
+    // numeri interi tra 1 e 5 per i voti
+    var numVote = Math.floor(results[i].vote_average / 2);
+
+    //creare le stelle per che corrisponadno ai numeri dei voti
+    var stars ="";
+    for (j=1; j<=numVote; j++){
+       stars += "<li><i class='fas fa-star'></i></li>";
+    }
+
+    // creare bandiera
+    var lingua = results[i].original_language;
+    var flags =' <img src="img/' + lingua +'.png " alt=" '
+    + lingua+' " class="lingua">';
+
+    // separare i titoli dei fil e serie tv
+    if (type == "film") {
+     var genere = results[i].title;
+   } else if (type == "tv") {
+     var genere = results[i].name;
+   }
+
+
+    // template
+    var context = {
+    "name": genere,
+    "lingua": flags,
+    "stars" : stars
+    };
+    var html = template(context);
+    $(".lista_film").append(html);
+  }
+  // fine ciclo
+
 }
