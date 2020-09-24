@@ -33,29 +33,41 @@
       <!-- /container nav -->
     </header>
 
+    <!-- main -->
+    <main>
+      <div class="container_list ">
+        <div class="row_film">
+          <div class="lista_film flex">
+
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- /main -->
 
 
 
 
-    <div class="">
-      <ul class="lista_film">
 
-      </ul>
+    <!-- <div class="">
+      <ul class="lista_film"> -->
+
+
       <!-- template film e serie tv -->
       <script id="film-template" type="text/x-handlebars-template">
-        <img src="http://image.tmdb.org/t/p/w185/{{immagine}}" alt="">
-        <li>Titolo: {{name}}</li>
-        <li>Titolo originale: {{originale}}</li>
-        <li>Lingua: {{{lingua}}}</li>
-        <li>
+        <div class="select">
+          <img src="http://image.tmdb.org/t/p/w342/{{immagine}}" alt="">
+          <p>{{type}}</p>
+          <p>Titolo: {{name}}</p>
+          <p>Titolo originale: {{originale}}</p>
+          <p>Lingua: {{{lingua}}}</p>
           <ul class="list_star">
-           {{{stars}}}
+            <li>{{{stars}}}</li>
           </ul>
-        </li>
-        <li>{{type}}</li>
+      </div>
       </script>
       <!-- /template film e serie tv -->
-    </div>
+    <!-- </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/script.js" charset="utf-8"></script>

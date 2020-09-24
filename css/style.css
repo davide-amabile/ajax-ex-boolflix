@@ -13,12 +13,17 @@ body {
 }
 /* container_nav */
 .container_nav{
+  width: 100%;
   justify-content: space-between;
   background-color: #000;
   height: 70px;
   line-height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
-/*/ container_nav */
+
 
 /* logo */
 .logo span {
@@ -32,7 +37,7 @@ body {
   margin-right: 20px;
 }
 
-
+/* bottone */
 
 #btn {
 
@@ -42,6 +47,26 @@ body {
   padding: 3px;
   border-radius: 10px;
   font-size: 12px;
+}
+/* /bottone */
+/*/ container_nav */
+
+/* container_list */
+.container_list {
+  height: calc(100vh - 70px);
+  background-color: #434343;
+  margin-top: 70px;
+  overflow-y: scroll;
+}
+
+/* row_film */
+.lista_film{
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.select {
+  margin: 15px 0;
 }
 
 /* elenco stelle voto nel template */
