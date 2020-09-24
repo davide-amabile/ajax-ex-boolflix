@@ -4,12 +4,44 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.flex{
+  display: flex;
+}
+/* container_nav */
+.container_nav{
+  justify-content: space-between;
+  background-color: #000;
+  height: 70px;
+  line-height: 70px;
+}
+/*/ container_nav */
+
+/* logo */
+.logo span {
+  color: #920000;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+/* /logo */
+.nav_search {
+  margin-right: 20px;
+}
+
+
+
 #btn {
 
   background-color: blue;
   color: #fff;
   text-decoration: none;
-  padding: 15px;
+  padding: 3px;
+  border-radius: 10px;
+  font-size: 12px;
 }
 
 /* elenco stelle voto nel template */
