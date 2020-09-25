@@ -71,11 +71,17 @@ body {
 
 .select {
   width: calc(100% / 4);
+
 }
 
 /* immagini */
  .container_poster{
   text-align: center;
+ }
+
+ .wrapper_info {
+  width:100%;
+
  }
 
  .container_info {
@@ -84,6 +90,8 @@ body {
    color: #fff;
    padding: 15px;
    height: 350px;
+   width: 300px;
+   margin: auto;
  }
 
  .container_info p {
@@ -118,3 +126,15 @@ body {
   width: 15px;
 }
 /* 7 bandiere */
+
+/*  hover img */
+
+
+
+.poster:hover + .container_info{
+  display: block;
+}
+
+.poster:hover {
+  display: none;
+}
