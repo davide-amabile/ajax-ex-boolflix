@@ -131,10 +131,10 @@ body {
 
 
 
-.poster:hover + .container_info{
+.container_poster:hover + .wrapper_info{
   display: block;
 }
 
-.poster:hover {
+.container_poster:hover {
   display: none;
 }
