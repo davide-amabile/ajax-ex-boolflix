@@ -78,6 +78,18 @@ body {
   text-align: center;
  }
 
+ .container_info {
+   background-color: #000;
+   border: 3px #fff solid;
+   color: #fff;
+   padding: 15px;
+   height: 350px;
+ }
+
+ .container_info p {
+   white-space: normal;
+ }
+
 
 
 .select .poster {
