@@ -11,6 +11,10 @@ body {
 .flex{
   display: flex;
 }
+
+.hide {
+  display: none;
+}
 /* container_nav */
 .container_nav{
   width: 100%;
@@ -64,6 +68,23 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.select {
+  width: calc(100% / 4);
+}
+
+/* immagini */
+ .container_poster{
+  text-align: center;
+ }
+
+
+
+.select .poster {
+  height: 350px;
+  width: 300px;
+}
+/* /immagini */
 
 .select {
   margin: 15px 0;
