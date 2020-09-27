@@ -35,6 +35,18 @@ $("#search").keypress(
    }
 });
 // fine vento keypress
+
+// evento hover per far sparire le img e far apparire i menu descrizione
+ $(document).on("mouseenter", '.poster', function(){
+   $(this).toggleClass("hide");
+   $(this).siblings(".container_info").toggleClass("hide");
+ });
+
+ $(document).on("mouseleave", '.container_info', function(){
+   $(this).toggleClass("hide");
+   $(this).siblings(".poster").toggleClass("hide");
+ });
+
 });
 // fine jquery
 
@@ -106,8 +118,13 @@ function renderResult(type, data){
 
     //creare le stelle per che corrisponadno ai numeri dei voti
     var stars ="";
-    for (j=1; j<=numVote; j++){
+    for (j=1; j<=5; j++){
+      if( j <= numVote) {
        stars += "<li><i class='fas fa-star'></i></li>";
+     }else {
+       stars += "<li><i class='far fa-star'></i></li>";
+     }
+
     }
 
     // creare bandiera
@@ -124,18 +141,30 @@ function renderResult(type, data){
      var nomeOr =  results[i].original_name;
    }
 
+   // creare poster immagine
+
+
+   if( results[i].poster_path == null){
+    var  immagine = "img/no_poster.png";
+   } else {
+    var immagine = "http://image.tmdb.org/t/p/w342/"+results[i].poster_path;
+   }
+
+
     // template
     var context = {
     "name": nome,
     "lingua": flags,
     "stars" : stars,
-    "immagine" : results[i].poster_path,
+    "immagine" : immagine,
     "originale" : nomeOr,
     "type" : type
     };
     var html = template(context);
     $(".lista_film").append(html);
+
   }
   // fine ciclo
+
 }
 // /funzione template

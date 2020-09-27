@@ -56,11 +56,12 @@
       <!-- template film e serie tv -->
       <script id="film-template" type="text/x-handlebars-template">
         <div class="select">
-          <div class="container_poster">
-           <img class="poster" src="http://image.tmdb.org/t/p/w342/{{immagine}}" alt="">
-          </div>
-          <div class="wrapper_info hide">
-            <div class="container_info">
+          <!-- poster film -->
+           <img class="poster" src="{{immagine}}" alt="">
+           <!--/ poster film -->
+
+           <!-- lista informazioni -->
+            <div class="container_info hide ">
               <p>{{type}}</p>
               <p>Titolo: {{name}}</p>
               <p>Titolo originale: {{originale}}</p>
@@ -69,7 +70,9 @@
                 <li>{{{stars}}}</li>
               </ul>
             </div>
-          </div>
+            <!-- lista informazioni -->
+
+
         </div>
       </script>
       <!-- /template film e serie tv -->
