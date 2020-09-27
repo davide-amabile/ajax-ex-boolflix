@@ -142,7 +142,7 @@ body {
 @media screen and (max-width: 400px){
 
   .logo span {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   #search {
@@ -150,10 +150,15 @@ body {
   }
 
   #btn {
-    font-size: 9px;
+    font-size: 7px;
   }
 
   .select .poster {
+    height: 300px;
+    width: 250px;
+  }
+
+  .container_info {
     height: 300px;
     width: 250px;
   }
