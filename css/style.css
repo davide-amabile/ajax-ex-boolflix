@@ -138,3 +138,23 @@ body {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 400px){
+
+  .logo span {
+    font-size: 15px;
+  }
+
+  #search {
+    font-size: 9px;
+  }
+
+  #btn {
+    font-size: 9px;
+  }
+
+  .select .poster {
+    height: 300px;
+    width: 250px;
+  }
+}
